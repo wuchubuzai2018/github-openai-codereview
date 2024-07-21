@@ -41,7 +41,7 @@ jobs:
           CHATGPT_KEY: ${{ secrets.CHATGPT_KEY }}
           CHATGPT_MODEL: ${{ secrets.CHATGPT_MODEL }}
         run: |
-          touch result_review.txt
+          touch result_review.md
           for file in ${{ steps.changed-java-files.outputs.all_changed_files }}; do
               content=$(jq -Rs . "$file")
               echo "准备发送AI代码审查请求"
@@ -57,7 +57,7 @@ jobs:
               else
                 echo "Response from OpenAI:"
                 echo "$airesponse"
-                echo "Github Action AI Code Review for \`$file\`, \n代码评审结果如下：\n $airesponse " >> result_review.txt 
+                echo "Github Action AI Code Review for \`$file\`, 代码评审结果如下： $airesponse " >> result_review.md
               fi
           done
         shell: bash
@@ -67,6 +67,6 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add result_review.txt
+          git add result_review.md
           git commit -m "Add OpenAI code review result"
           git push        
