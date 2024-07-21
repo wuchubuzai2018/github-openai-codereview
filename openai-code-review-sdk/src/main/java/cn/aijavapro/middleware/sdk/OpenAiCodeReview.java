@@ -12,7 +12,7 @@ public class OpenAiCodeReview {
     }
     
     public void test(){
-        int a = 4 / 0;
+        int a = 5 / 0;
         System.out.println(a);
     }
     
