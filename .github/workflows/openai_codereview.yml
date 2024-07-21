@@ -22,6 +22,7 @@ jobs:
             # Avoid using single or double quotes for multiline patterns
             files: |
               **.java
+              
       - name: List all changed files
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-java-files.outputs.all_changed_files }}
@@ -30,6 +31,7 @@ jobs:
               echo "$file was changed"
           done
         shell: bash
+        
       - name: Open AI Review code
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -63,3 +65,4 @@ jobs:
             git commit -m "Add OpenAI code review result"
             git push
         shell: bash
+        
