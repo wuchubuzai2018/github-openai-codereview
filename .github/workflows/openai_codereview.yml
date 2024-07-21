@@ -45,7 +45,7 @@ jobs:
           for file in ${{ steps.changed-java-files.outputs.all_changed_files }}; do
               content=$(jq -Rs . "$file")
               echo "准备发送AI代码审查请求"
-              json=$(jq -n data $content '{"stream": false,"model": "glm-4-flash","messages": [ {"role": "system", "content": "你是一个Java技术专家,请对我的代码进行评审，提出优化建议与问题."},{"role": "user", "content": "我给你提供的代码如下: $data"}]}'
+              json=$(jq -n data $content '{"stream": false,"model": "glm-4-flash","messages": [ {"role": "system", "content": "你是一个Java技术专家,请对我的代码进行评审，提出优化建议与问题."},{"role": "user", "content": "我给你提供的代码如下: $data"}]}')
               echo "发送给AI的数据结构: $json"
               airesponse=$(curl https://open.bigmodel.cn/api/paas/v4/chat/completions \
                 -H "Content-Type: application/json" \
