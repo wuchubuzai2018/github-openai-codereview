@@ -11,4 +11,9 @@ public class OpenAiCodeReview {
         System.out.println("测试执行");
     }
     
+    public void test(){
+        int a = 4 / 0;
+        System.out.println(a);
+    }
+    
 }
