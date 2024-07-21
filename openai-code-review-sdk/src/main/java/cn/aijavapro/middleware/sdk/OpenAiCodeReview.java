@@ -8,7 +8,7 @@ package cn.aijavapro.middleware.sdk;
 public class OpenAiCodeReview {
     
     public static void main(String[] args) {
-        System.out.println("测试执行3");
+        System.out.println("测试执行4");
     }
     
     public void test(){
