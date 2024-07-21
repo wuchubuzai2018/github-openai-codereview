@@ -35,7 +35,12 @@ jobs:
               touch result_review.txt
               for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
                   content=$(cat "$file")
-                  airesponse=$(curl -X POST https://api.openai.com/v1/chat/completions -H "Content-Type: application/json" -H "Authorization: Bearer $CHATGPT_KEY" -d '{"model": "$CHATGPT_MODEL","messages": [{"role": "system","content": "你是一个Java技术专家,请对我的代码进行评审，提出优化建议与问题."},{"role": "user","content": "我给你提供的代码如下:$content"}]' | jq -r '.response')
+                  airesponse=$(curl -X POST https://api.openai.com/v1/chat/completions 
+                    -H "Content-Type:application/json" 
+                    -H "Authorization:Bearer $CHATGPT_KEY" 
+                    -d '{"model":"$CHATGPT_MODEL","messages":[
+                    {"role":"system","content":"你是一个Java技术专家,请对我的代码进行评审，提出优化建议与问题."},
+                    {"role":"user","content":"我给你提供的代码如下:$content"}]' | jq -r '.response')
                   echo "Response from OpenAI:"
                   echo "$airesponse"
                   comment="Code Review for \`$file\`:\n\n  $airesponse"
