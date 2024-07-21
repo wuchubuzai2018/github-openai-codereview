@@ -53,9 +53,9 @@ jobs:
                   "model": "gpt-4o",
                   "messages": [
                     {"role": "system", "content": "你是一个Java技术专家,请对我的代码进行评审，提出优化建议与问题."},
-                    {"role": "user", "content": "我给你提供的代码如下: '"$content"'"}
+                    {"role": "user", "content": "我给你提供的代码如下: "$content"}
                   ]
-                }' | jq -r '.choices[0].message.content')
+                }')
               echo "Response from OpenAI:"
               echo "$airesponse"
           done
