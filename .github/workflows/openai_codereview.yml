@@ -26,9 +26,11 @@ jobs:
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-java-files.outputs.all_changed_files }}
         run: |
-            for file in ${ALL_CHANGED_FILES}; do
+          for file in ${ALL_CHANGED_FILES}; do
               echo "$file was changed"
-            done
+          done
+        shell:
+          bash
       - name: Open AI Review code
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -61,3 +63,5 @@ jobs:
             git add openai_review.txt
             git commit -m "Add OpenAI code review result"
             git push
+        shell:
+          bash
