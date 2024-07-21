@@ -8,9 +8,12 @@ package cn.aijavapro.middleware.sdk;
 public class OpenAiCodeReview {
     
     public static void main(String[] args) {
-        System.out.println("测试执行7");
+        System.out.println("测试执行6");
     }
     
+    /**
+     * 测试一个除法
+     */
     public void test(){
         int a = 5 / 0;
         System.out.println(a);
