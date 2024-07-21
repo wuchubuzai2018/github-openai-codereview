@@ -39,19 +39,24 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CHATGPT_KEY: ${{ secrets.CHATGPT_KEY }}
-          CHATGPT_MODEL: "gpt-4o"
+          CHATGPT_MODEL: "gpt-4o-mini"
         run: |
           touch result_review.txt
           for file in ${{ steps.changed-java-files.outputs.all_changed_files }}; do
               content=$(jq -Rs . "$file")
               echo "审查代码: $content"
               echo "准备发送AI代码审查请求"
-              json=$(jq -n --arg content "$content" '{"stream": false,"model": "gpt-4o","messages": [ {"role": "system", "content": "你是一个Java技术专家,请对我的代码进行评审，提出优化建议与问题."},{"role": "user", "content": "我给你提供的代码如下: $content"}]}')
-              airesponse=$(curl https://api.openai.com/v1/chat/completions \
+              json=$(jq -n --arg content "$content" '{"stream": false,"model": "glm-4-flash","messages": [ {"role": "system", "content": "你是一个Java技术专家,请对我的代码进行评审，提出优化建议与问题."},{"role": "user", "content": "我给你提供的代码如下: $content"}]}')
+              airesponse=$(curl https://open.bigmodel.cn/api/paas/v4/chat/completions \
                 -H "Content-Type: application/json" \
                 -H "Authorization: Bearer $CHATGPT_KEY" -d "$json" | jq -r '.choices[0].message.content')
               
-              echo "Response from OpenAI:"
-              echo "$airesponse"
+              if [ "$airesponse" == "null" ]; then
+                echo "OpenAI API调用失败，请检查配额和账单信息。"
+                exit 1
+              else
+                echo "Response from OpenAI:"
+                echo "$airesponse"
+              fi
           done
         shell: bash
