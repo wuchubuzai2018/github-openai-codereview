@@ -11,12 +11,6 @@ public class OpenAiCodeReview {
         System.out.println("测试执行8");
     }
     
-    /**
-     * 测试一个除法
-     */
-    public void test(){
-        int a = 5 / 0;
-        System.out.println(a);
-    }
+  
     
 }

@@ -3,7 +3,7 @@ name: AI LLM Code Review Workflow
 on:
   push:
     branches:
-      - '*'
+      - 'xxxx'
 
 jobs:
   openai-code-review:

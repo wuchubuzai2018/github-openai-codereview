@@ -6,7 +6,7 @@
     <parent>
         <groupId>cn.aijavapro</groupId>
         <artifactId>github-openai-codereview</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0</version>
     </parent>
     
     <artifactId>openai-code-review-sdk</artifactId>
@@ -103,7 +103,7 @@
                     <archive>
                         <manifest>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                            <mainClass>plus.gaga.middleware.sdk.OpenAiCodeReview</mainClass>
+                            <mainClass>cn.aijavapro.middleware.sdk.OpenAiCodeReview</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
