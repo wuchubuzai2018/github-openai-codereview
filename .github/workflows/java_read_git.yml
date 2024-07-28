@@ -28,5 +28,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CHATGPT_KEY: ${{ secrets.CHATGPT_KEY }}
-        run: java -D$CHATGPT_KEY -jar ./libs/openai-code-review-sdk-1.0.jar
+        run: java -DGLM_KEY=$CHATGPT_KEY -jar ./libs/openai-code-review-sdk-1.0.jar
 

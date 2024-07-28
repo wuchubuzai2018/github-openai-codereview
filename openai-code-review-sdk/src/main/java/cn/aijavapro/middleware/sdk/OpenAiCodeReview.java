@@ -63,6 +63,7 @@ public class OpenAiCodeReview {
                 .build();
         String key = System.getProperty("GLM_KEY");
         if(key == null || key.trim().length() == 0){
+            System.out.println("未发现秘钥信息");
             return "";
         }
         ClientV4 client = new ClientV4.Builder(key).build();
