@@ -77,6 +77,10 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.bigmodel.openapi</groupId>
+            <artifactId>oapi-java-sdk</artifactId>
+        </dependency>
     </dependencies>
     
     <build>
@@ -137,6 +141,7 @@
                             <include>com.fasterxml.jackson.core:jackson-annotations:</include>
                             <include>org.eclipse.jgit:org.eclipse.jgit:</include>
                             <include>commons-io:commons-io:jar:</include>
+                            <include>cn.bigmodel.openapi:oapi-java-sdk:jar:</include>
                         </includes>
                     </artifactSet>
                 </configuration>
