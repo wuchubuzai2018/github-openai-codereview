@@ -74,7 +74,7 @@
             <version>5.13.0.202109080827-r</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
+            <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
         </dependency>
     </dependencies>
@@ -136,7 +136,7 @@
                             <include>com.fasterxml.jackson.core:jackson-databind:</include>
                             <include>com.fasterxml.jackson.core:jackson-annotations:</include>
                             <include>org.eclipse.jgit:org.eclipse.jgit:</include>
-                            <include>org.apache.commons:commons-io:</include>
+                            <include>commons-io:commons-io:jar:</include>
                         </includes>
                     </artifactSet>
                 </configuration>
