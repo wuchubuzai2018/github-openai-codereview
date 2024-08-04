@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class JavaCodeReviewHttpUtil {
     
     public static String codeReview(String diffCode) throws Exception {
-        String zhipuKey = System.getProperty("ZHIPU_KEY");
+        String zhipuKey = System.getenv("CHATGPT_KEY");
         if (StringUtils.isEmpty(zhipuKey)) {
             return zhipuKey;
         }

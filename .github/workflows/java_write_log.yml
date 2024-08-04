@@ -1,9 +1,9 @@
-name: Java Git Read Workflow
+name: Java Git Write Log CodeReview
 
 on:
   push:
     branches:
-      - 'XXXX'
+      - '20240804-write-log'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,5 +28,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CHATGPT_KEY: ${{ secrets.CHATGPT_KEY }}
-        run: java -DGLM_KEY=$CHATGPT_KEY -jar ./libs/openai-code-review-sdk-1.0.jar
+          GIT_USER_TOKEN: ${{ secrets.GIT_USER_TOKEN }}
+        run: java -jar ./libs/openai-code-review-sdk-1.0.jar
+
 
